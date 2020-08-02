@@ -30,4 +30,69 @@ public class ClienteDAOImpl implements ClienteDAO {
 
 	}
 
+	@Override
+	public int update(Cliente c) {
+
+		String sql = "UPDATE Clientes SET Nombre = ?, Apellido = ?, Fecha_Nacimiento = ?, Email = ?, Telefono = ? WHERE Id = ?";
+		return jdbcTemplate.update(sql, c.getNombre(), c.getApellido(), c.getFNacimiento(), c.getEmail(), c.getTelefono(), c.getId());
+
+	}
+
+	@Override
+	public Cliente get(Integer id) {
+	
+		String sql = "SELECT * FROM Clientes WHERE id = " + id;
+		
+		ResultSetExtractor<Cliente> extractor = new ResultSetExtractor<Cliente>() {
+			
+			@Override
+			public Cliente extractData(ResultSet rs) throws SQLException, DataAccessException {
+				
+				if (rs.next()) {
+					String nombre      = rs.getString("Nombre");
+					String apellido    = rs.getString("Apellido");
+					Date   fnacimiento = rs.getDate("Fecha_Nacimiento");
+					String email       = rs.getString("Email");
+					String telefono    = rs.getString("Telefono");
+					
+					return new Cliente(id, nombre, apellido, fnacimiento, email, telefono);
+				}
+				
+				return null;
+				
+			}
+		};
+		
+		return jdbcTemplate.query(sql, extractor);
+	}
+
+	@Override
+	public int delete(Integer id) {
+		String sql = "DELETE FROM Clientes where id = " + id;
+		return jdbcTemplate.update(sql);
+	}
+
+	@Override
+	public List<Cliente> list() {
+		String sql = "SELECT * FROM Clientes";
+		
+		RowMapper<Cliente> rowMapper = new RowMapper<Cliente>() {
+
+			@Override
+			public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Integer id          = rs.getInt("id");
+				String  nombre      = rs.getString("Nombre");
+				String  apellido    = rs.getString("Apellido");
+				Date    fnacimiento = rs.getDate("Fecha_Nacimiento");
+				String  email       = rs.getString("Email");
+				String  telefono    = rs.getString("Telefono");
+				
+				return new Cliente(id, nombre, apellido, fnacimiento, email, telefono);
+			}
+			
+		};
+		
+		return jdbcTemplate.query(sql, rowMapper);
+	}
+
 }
