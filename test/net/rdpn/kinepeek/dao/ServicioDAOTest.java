@@ -30,7 +30,7 @@ class ServicioDAOTest {
 	@Test
 	void testSave() {
 		Date     date     = new Date();
-		Servicio servicio = new Servicio(2, date, "Alejandro Cuevas", "Test JUnit de inserción de servicio");
+		Servicio servicio = new Servicio(1, date, "Alejandro Cuevas", "Test JUnit de inserción de servicio");
 		
 		int result = dao.save(servicio);
 		assertTrue(result > 0);
@@ -39,7 +39,7 @@ class ServicioDAOTest {
 	@Test
 	void testUpdate() {
 		Date     date     = new Date();
-		Servicio servicio = new Servicio(1, 2, date, "Alejandro Cuevas", "Test JUnit de inserción de servicio - ACTUALIZADO");
+		Servicio servicio = new Servicio(1, 1, date, "Alejandro Cuevas", "Test JUnit de inserción de servicio - ACTUALIZADO");
 		
 		int result = dao.update(servicio);
 		assertTrue(result > 0);	
