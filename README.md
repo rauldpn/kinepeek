@@ -17,4 +17,4 @@ Como solución se ha ofrecido un aplicación web que permita realizar esta gesti
 
 
 ### Tabla de Contenido
-- [Arquitectura] (https://github.com/rauldpn/kinepeek/wiki/Arquitectura)
+- [Arquitectura](http://github.com/rauldpn/kinepeek/wiki/Arquitectura)
