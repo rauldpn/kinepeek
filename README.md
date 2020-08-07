@@ -18,3 +18,6 @@ Como solución se ha ofrecido un aplicación web que permita realizar esta gesti
 
 ### Tabla de Contenido
 - [Arquitectura](http://github.com/rauldpn/kinepeek/wiki/Arquitectura)
+- [Requerimientos](http://github.com/rauldpn/kinepeek/wiki/Requerimientos)
+- [Instalación](http://github.com/rauldpn/kinepeek/wiki/Instalación)
+- [Configuración](http://github.com/rauldpn/kinepeek/wiki/Configuración)
